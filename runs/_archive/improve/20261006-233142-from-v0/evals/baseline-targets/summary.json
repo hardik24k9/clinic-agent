@@ -1,0 +1,81 @@
+{
+ "run_id": "baseline-targets",
+ "playbook_version": 0,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "groq",
+   "model": "qwen/qwen3.8-27b"
+  }
+ },
+ "scenarios": {
+  "linked_child": {
+   "scenario_id": "linked_child",
+   "split": "train",
+   "category": "identity",
+   "trials": []
+  },
+  "next_friday_ambiguity": {
+   "scenario_id": "next_friday_ambiguity",
+   "split": "train",
+   "category": "robustness",
+   "trials": []
+  },
+  "wrong_dob_then_corrected": {
+   "scenario_id": "wrong_dob_then_corrected",
+   "split": "train",
+   "category": "identity",
+   "trials": []
+  }
+ },
+ "budget": {
+  "elapsed_s": 109.1,
+  "by_role": {
+   "agent": {
+    "calls": 6,
+    "cache_hits": 0,
+    "prompt_tokens": 7311,
+    "completion_tokens": 448
+   },
+   "guard": {
+    "calls": 2,
+    "cache_hits": 2,
+    "prompt_tokens": 448,
+    "completion_tokens": 124
+   },
+   "reflector": {
+    "calls": 1,
+    "cache_hits": 0,
+    "prompt_tokens": 5281,
+    "completion_tokens": 1237
+   },
+   "simulator": {
+    "calls": 3,
+    "cache_hits": 0,
+    "prompt_tokens": 1666,
+    "completion_tokens": 195
+   }
+  },
+  "total_calls": 12,
+  "total_tokens": 16710
+ },
+ "complete": false,
+ "stop_reason": "quota: groq/openai/gpt-oss-20b: rate limit/quota reached (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m49q4ypxegv8gzs9najwnb5v` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199128, Requested 2098. Please try again",
+ "infra_errors": [],
+ "not_run": 8
+}

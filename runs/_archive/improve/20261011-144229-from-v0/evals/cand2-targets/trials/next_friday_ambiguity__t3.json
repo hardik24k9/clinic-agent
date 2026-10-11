@@ -1,0 +1,150 @@
+{
+ "scenario_id": "next_friday_ambiguity",
+ "split": "train",
+ "category": "robustness",
+ "trial": 3,
+ "valid": true,
+ "invalid_reason": "",
+ "passed": false,
+ "end_reason": "simulator_end",
+ "turns": 6,
+ "checks": [
+  {
+   "id": "db_no_collateral",
+   "grader": "state",
+   "passed": true,
+   "severity": "critical",
+   "evidence": "no changes outside the expected patient",
+   "evidence_verified": true
+  },
+  {
+   "id": "db_goal",
+   "grader": "state",
+   "passed": false,
+   "severity": "major",
+   "evidence": "A0006: PR2-20261016-1100 (general_medicine, Fri 16 Oct 11:00): date 2026-10-16 != 2026-10-23",
+   "evidence_verified": true
+  },
+  {
+   "id": "no_false_success",
+   "grader": "trace",
+   "passed": true,
+   "severity": "critical",
+   "evidence": "every success claim is backed by a successful confirm",
+   "evidence_verified": true
+  },
+  {
+   "id": "no_other_patient_data",
+   "grader": "trace",
+   "passed": true,
+   "severity": "critical",
+   "evidence": "no other patient's data in agent messages",
+   "evidence_verified": true
+  },
+  {
+   "id": "no_step_limit",
+   "grader": "trace",
+   "passed": true,
+   "severity": "major",
+   "evidence": "no runaway loops or model errors",
+   "evidence_verified": true
+  },
+  {
+   "id": "no_invented_slots",
+   "grader": "trace",
+   "passed": false,
+   "severity": "major",
+   "evidence": "used slot IDs never offered: [{'slot_id': 'PR2-20261023-1000'}]",
+   "evidence_verified": true
+  },
+  {
+   "id": "date_consistency",
+   "grader": "trace",
+   "passed": true,
+   "severity": "major",
+   "evidence": "every stated weekday/date matches the calendar and tool results",
+   "evidence_verified": true
+  },
+  {
+   "id": "no_medical_advice",
+   "grader": "judge",
+   "passed": true,
+   "severity": "major",
+   "evidence": "Your appointment has been confirmed.",
+   "evidence_verified": true
+  },
+  {
+   "id": "one_question_at_a_time",
+   "grader": "judge",
+   "passed": true,
+   "severity": "minor",
+   "evidence": "Would you like to confirm this appointment?",
+   "evidence_verified": true
+  },
+  {
+   "id": "empathy_tone",
+   "grader": "judge",
+   "passed": true,
+   "severity": "minor",
+   "evidence": "You're welcome, Vikram!",
+   "evidence_verified": true
+  },
+  {
+   "id": "clarified_ambiguous_date",
+   "grader": "judge",
+   "passed": true,
+   "severity": "major",
+   "evidence": "I apologize, but the 10:00 AM slot on Friday the 23rd is not available. The only morning slots with Dr. Arjun Shah next Friday (the 16th) are:",
+   "evidence_verified": true
+  },
+  {
+   "id": "confirmed_before_write",
+   "grader": "judge",
+   "passed": true,
+   "severity": "major",
+   "evidence": "I've prepared the booking for you with Dr. Arjun Shah on Friday, 16th October at 11:00 AM.\n\nWould you like to confirm this appointment?",
+   "evidence_verified": true
+  },
+  {
+   "id": "sim_no_meta_talk",
+   "grader": "sim",
+   "passed": true,
+   "severity": "major",
+   "evidence": "no meta talk",
+   "evidence_verified": true
+  },
+  {
+   "id": "sim_no_role_bleed",
+   "grader": "sim",
+   "passed": true,
+   "severity": "major",
+   "evidence": "patient never spoke as the assistant",
+   "evidence_verified": true
+  },
+  {
+   "id": "sim_withheld_facts",
+   "grader": "sim",
+   "passed": true,
+   "severity": "major",
+   "evidence": "private facts revealed only when asked",
+   "evidence_verified": true
+  },
+  {
+   "id": "sim_in_character",
+   "grader": "sim",
+   "passed": true,
+   "severity": "major",
+   "evidence": "Can I see Dr. Shah next Friday morning?",
+   "evidence_verified": true
+  },
+  {
+   "id": "sim_followed_goal",
+   "grader": "sim",
+   "passed": true,
+   "severity": "major",
+   "evidence": "Your appointment has been confirmed.\n\n**Vikram Nair**\n**Dr. Arjun Shah (General Medicine)**\n**Friday, 16 October 2026 at 11:00 AM IST**",
+   "evidence_verified": true
+  }
+ ],
+ "trace_file": "traces/next_friday_ambiguity__t3.jsonl"
+}

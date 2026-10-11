@@ -1,0 +1,9 @@
+{
+ "patches": [],
+ "schema_rejected": [
+  {
+   "candidate": null,
+   "reason": "reflector failed: QuotaExhausted: groq/openai/gpt-oss-120b: rate limit/quota reached (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m49sq7d7e7d9ff9h7crqkeh2` service"
+  }
+ ]
+}

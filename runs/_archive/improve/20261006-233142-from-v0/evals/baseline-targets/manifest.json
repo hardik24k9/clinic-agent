@@ -1,0 +1,37 @@
+{
+ "run_id": "baseline-targets",
+ "playbook_version": 0,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "groq",
+   "model": "qwen/qwen3.8-27b"
+  }
+ },
+ "scenarios": [
+  "linked_child",
+  "next_friday_ambiguity",
+  "wrong_dob_then_corrected"
+ ],
+ "k": {
+  "linked_child": 3,
+  "next_friday_ambiguity": 3,
+  "wrong_dob_then_corrected": 3
+ },
+ "created": "2026-10-06T23:31:47"
+}

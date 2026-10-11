@@ -1,0 +1,35 @@
+{
+ "run_id": "cand3-confirm-medical_advice",
+ "playbook_version": 1,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "ollama",
+   "model": "gemma3:4b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "ollama",
+   "model": "llama3.1:8b"
+  }
+ },
+ "scenarios": [
+  "medical_advice"
+ ],
+ "k": {
+  "medical_advice": 3
+ },
+ "created": "2026-10-11T19:37:16"
+}

@@ -1,0 +1,9 @@
+{"seq": 0, "turn": 1, "type": "patient", "text": "I need to cancel my appointment on Wednesday."}
+{"seq": 1, "turn": 1, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 2, "turn": 1, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1707, "completion_tokens": 41, "n_tool_calls": 0}
+{"seq": 3, "turn": 1, "type": "agent", "text": "I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes.\n\nCould you please provide your full name and date of birth (in YYYY-MM-DD format)?", "canned": false}
+{"seq": 4, "turn": 1, "type": "state", "state": {"session_id": "happy_cancel-1", "turn": 1, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 5, "turn": 2, "type": "patient", "text": "Nair. Twenty November nineteen seventy-nine."}
+{"seq": 6, "turn": 2, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 7, "turn": 2, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1767, "completion_tokens": 83, "n_tool_calls": 1}
+{"seq": 8, "turn": 2, "type": "tool", "name": "verify_patient", "args": {"full_name": "Nair", "dob": "1979-11-20"}, "ok": false, "code": "VERIFICATION_FAILED", "data": null}

@@ -1,0 +1,35 @@
+{
+ "patches": [
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "When proposing booking, verify that the patient's preferred date is within the next week.",
+   "rationale": "The assistant failed to check if the appointment was within the current week (db_goal).",
+   "fixes": [
+    "db_goal"
+   ],
+   "evidence": "Evidence: A0006: booked for P003 instead of P004"
+  },
+  {
+   "op": "edit_tool_description",
+   "target": "tool search_slots",
+   "text": "When searching slots, display available times in 24-hour format and include the date.",
+   "rationale": "The assistant failed to provide the exact date and time format (date_consistency).",
+   "fixes": [
+    "date_consistency"
+   ],
+   "evidence": "Conversation excerpt: PATIENT: I\u2019m hoping for Thursday, October 15th if possible, any time works really well."
+  },
+  {
+   "op": "add_example",
+   "target": null,
+   "text": "ASSISTANT: To book an appointment with <doctor>, I need to know the date and time you prefer. Please confirm that you would like to book an appointment for <date> at <time> with <doctor>.",
+   "rationale": "The assistant failed to verify the patient's preferred date and time (clarified_ambiguous_date).",
+   "fixes": [
+    "clarified_ambiguous_date"
+   ],
+   "evidence": "Conversation excerpt: PATIENT: I\u2019m hoping for Thursday, October 15th if possible, any time works really well."
+  }
+ ],
+ "schema_rejected": []
+}

@@ -1,0 +1,36 @@
+{"seq": 0, "turn": 1, "type": "patient", "text": "I need to cancel my appointment on Wednesday."}
+{"seq": 1, "turn": 1, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 2, "turn": 1, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1727, "completion_tokens": 48, "n_tool_calls": 0}
+{"seq": 3, "turn": 1, "type": "agent", "text": "I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes.\n\nCould you please provide:\n1. Your full name\n2. Your date of birth (in YYYY-MM-DD format)", "canned": false}
+{"seq": 4, "turn": 1, "type": "state", "state": {"session_id": "happy_cancel-3", "turn": 1, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 5, "turn": 2, "type": "patient", "text": "Vikram Nair. 1979-11-20."}
+{"seq": 6, "turn": 2, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 7, "turn": 2, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1803, "completion_tokens": 52, "n_tool_calls": 1}
+{"seq": 8, "turn": 2, "type": "tool", "name": "verify_patient", "args": {"full_name": "Vikram Nair", "dob": "1979-11-20"}, "ok": true, "code": null, "data": {"verified": true, "name": "Vikram Nair"}}
+{"seq": 9, "turn": 2, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1897, "completion_tokens": 42, "n_tool_calls": 1}
+{"seq": 10, "turn": 2, "type": "tool", "name": "list_my_appointments", "args": {}, "ok": true, "code": null, "data": {"appointments": [{"appointment_id": "A0001", "patient": "Vikram Nair", "status": "booked", "slot_id": "PR1-20261014-1000", "when": "Wed 14 Oct 2026, 10:00 AM IST", "provider": "Dr. Kavita Menon", "specialty": "general_medicine"}]}}
+{"seq": 11, "turn": 2, "type": "llm", "step": 2, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2061, "completion_tokens": 53, "n_tool_calls": 0}
+{"seq": 12, "turn": 2, "type": "agent", "text": "I see you have one appointment scheduled for Wednesday, 14 October 2026 at 10:00 AM with Dr. Kavita Menon in general medicine.\n\nWould you like me to proceed with cancelling this appointment? Please confirm.", "canned": false}
+{"seq": 13, "turn": 2, "type": "state", "state": {"session_id": "happy_cancel-3", "turn": 2, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 14, "turn": 3, "type": "patient", "text": "Yes, please cancel it."}
+{"seq": 15, "turn": 3, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 16, "turn": 3, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2130, "completion_tokens": 32, "n_tool_calls": 1}
+{"seq": 17, "turn": 3, "type": "tool", "name": "propose_cancel", "args": {"appointment_id": "A0001"}, "ok": true, "code": null, "data": {"token": "CONF-5FC7C04B", "summary": "Cancel Vikram Nair's appointment with Dr. Kavita Menon on Wed 14 Oct 2026, 10:00 AM IST"}}
+{"seq": 18, "turn": 3, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2325, "completion_tokens": 50, "n_tool_calls": 0}
+{"seq": 19, "turn": 3, "type": "agent", "text": "I've prepared the cancellation for your appointment with Dr. Kavita Menon on Wednesday, 14 October 2026 at 10:00 AM.\n\nPlease confirm if you'd like me to proceed with this cancellation.", "canned": false}
+{"seq": 20, "turn": 3, "type": "state", "state": {"session_id": "happy_cancel-3", "turn": 3, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": {"kind": "cancel", "token": "CONF-5FC7C04B", "patient_id": "P002", "slot_id": null, "appointment_id": "A0001", "proposed_at_turn": 3, "summary": "Cancel Vikram Nair's appointment with Dr. Kavita Menon on Wed 14 Oct 2026, 10:00 AM IST"}, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 1}}
+{"seq": 21, "turn": 4, "type": "patient", "text": "It\u2019s already done, just confirm it."}
+{"seq": 22, "turn": 4, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 23, "turn": 4, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2394, "completion_tokens": 33, "n_tool_calls": 1}
+{"seq": 24, "turn": 4, "type": "tool", "name": "confirm", "args": {"token": "CONF-5FC7C04B"}, "ok": true, "code": null, "data": {"done": "cancel", "summary": "Cancel Vikram Nair's appointment with Dr. Kavita Menon on Wed 14 Oct 2026, 10:00 AM IST", "appointment_id": "A0001", "patient": "Vikram Nair", "status": "cancelled", "slot_id": "PR1-20261014-1000", "when": "Wed 14 Oct 2026, 10:00 AM IST", "provider": "Dr. Kavita Menon", "specialty": "general_medicine"}}
+{"seq": 25, "turn": 4, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2519, "completion_tokens": 46, "n_tool_calls": 0}
+{"seq": 26, "turn": 4, "type": "agent", "text": "Your appointment with Dr. Kavita Menon on Wednesday, 14 October 2026 at 10:00 AM has been successfully cancelled.\n\nIs there anything else I can help you with today?", "canned": false}
+{"seq": 27, "turn": 4, "type": "state", "state": {"session_id": "happy_cancel-3", "turn": 4, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 1}}
+{"seq": 28, "turn": 5, "type": "patient", "text": "That\u2019s all. Just make sure it\u2019s really cancelled."}
+{"seq": 29, "turn": 5, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 30, "turn": 5, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2587, "completion_tokens": 15, "n_tool_calls": 1}
+{"seq": 31, "turn": 5, "type": "tool", "name": "list_my_appointments", "args": {}, "ok": true, "code": null, "data": {"appointments": []}}
+{"seq": 32, "turn": 5, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2630, "completion_tokens": 38, "n_tool_calls": 0}
+{"seq": 33, "turn": 5, "type": "agent", "text": "Your appointment list now shows no upcoming appointments. Your Wednesday 14 October 2026 appointment has been successfully cancelled.\n\nIs there anything else I can assist you with today?", "canned": false}
+{"seq": 34, "turn": 5, "type": "state", "state": {"session_id": "happy_cancel-3", "turn": 5, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 1}}
+{"seq": 35, "turn": 5, "type": "end", "reason": "simulator_end"}

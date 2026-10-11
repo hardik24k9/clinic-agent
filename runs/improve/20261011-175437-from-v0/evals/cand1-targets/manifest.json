@@ -1,0 +1,41 @@
+{
+ "run_id": "cand1-targets",
+ "playbook_version": 1,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "ollama",
+   "model": "gemma3:4b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "ollama",
+   "model": "llama3.1:8b"
+  }
+ },
+ "scenarios": [
+  "happy_cancel",
+  "linked_child",
+  "next_friday_ambiguity",
+  "tool_timeout"
+ ],
+ "k": {
+  "happy_cancel": 3,
+  "linked_child": 3,
+  "next_friday_ambiguity": 3,
+  "tool_timeout": 3
+ },
+ "created": "2026-10-11T18:08:18"
+}

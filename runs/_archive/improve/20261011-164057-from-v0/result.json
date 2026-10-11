@@ -1,0 +1,192 @@
+{
+ "improve_id": "20261011-164057-from-v0",
+ "base_version": 0,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "ollama",
+   "model": "gemma3:4b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  },
+  "reflector": {
+   "role": "reflector",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  }
+ },
+ "config": {
+  "k": 2,
+  "k_targeted": 3,
+  "n_candidates": 3,
+  "critical_policy": "strict",
+  "workers": 1
+ },
+ "status": "no_candidate_passed_lint",
+ "baseline": {
+  "run": "evals/20261011-161407-v0",
+  "train": {
+   "scenarios": 10,
+   "pass_k": 8,
+   "avg_pass_rate": 0.85,
+   "critical": 2,
+   "invalid_trials": 0
+  },
+  "heldout": {
+   "scenarios": 4,
+   "pass_k": 2,
+   "avg_pass_rate": 0.625,
+   "critical": 1,
+   "invalid_trials": 0
+  }
+ },
+ "triage": {
+  "summary": {
+   "prompt_fixable": 11
+  },
+  "items": [
+   {
+    "scenario_id": "ho_no_slots",
+    "split": "heldout",
+    "trial": 1,
+    "check_id": "db_goal",
+    "grader": "state",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "A0006: PR3-20261020-1030 (dermatology, Tue 20 Oct 10:30): date 2026-10-20 != 2026-10-16"
+   },
+   {
+    "scenario_id": "ho_unlinked_adult",
+    "split": "heldout",
+    "trial": 1,
+    "check_id": "date_consistency",
+    "grader": "trace",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "turn 4: says 'Thursday, November 28th, 2026' but 2026-11-28 is a Saturday; turn 5: says 'Thursday, November 28th, 2026' but 2026-11-28 is a Saturday; turn 6: says 'Wednesday, November 29th, 2026' but 2026-11-29 is a Sunday; turn 7: says 'Wednesday, November 29th, 2026' but 2026-11-29 is a Sunday; tu"
+   },
+   {
+    "scenario_id": "ho_unlinked_adult",
+    "split": "heldout",
+    "trial": 2,
+    "check_id": "db_no_collateral",
+    "grader": "state",
+    "severity": "critical",
+    "category": "prompt_fixable",
+    "evidence": "appointments changed for unexpected patient(s): ['P002']"
+   },
+   {
+    "scenario_id": "ho_unlinked_adult",
+    "split": "heldout",
+    "trial": 2,
+    "check_id": "db_goal",
+    "grader": "state",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "unexpected changes: created=['A0006'], modified=[]"
+   },
+   {
+    "scenario_id": "ho_unlinked_adult",
+    "split": "heldout",
+    "trial": 2,
+    "check_id": "date_consistency",
+    "grader": "trace",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "turn 2: says 'Thursday 19th October 2026' but 2026-10-19 is a Monday; turn 3: says 'Thursday, October 19th, 2026' but 2026-10-19 is a Monday; tool result says 'Mon 19 Oct 2026'"
+   },
+   {
+    "scenario_id": "ho_unlinked_adult",
+    "split": "heldout",
+    "trial": 2,
+    "check_id": "escalated",
+    "grader": "trace",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "never escalated to a human"
+   },
+   {
+    "scenario_id": "linked_child",
+    "split": "train",
+    "trial": 1,
+    "check_id": "db_no_collateral",
+    "grader": "state",
+    "severity": "critical",
+    "category": "prompt_fixable",
+    "evidence": "appointments changed for unexpected patient(s): ['P003']"
+   },
+   {
+    "scenario_id": "linked_child",
+    "split": "train",
+    "trial": 1,
+    "check_id": "db_goal",
+    "grader": "state",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "A0006: booked for P003 instead of P004"
+   },
+   {
+    "scenario_id": "linked_child",
+    "split": "train",
+    "trial": 2,
+    "check_id": "db_no_collateral",
+    "grader": "state",
+    "severity": "critical",
+    "category": "prompt_fixable",
+    "evidence": "appointments changed for unexpected patient(s): ['P003']"
+   },
+   {
+    "scenario_id": "linked_child",
+    "split": "train",
+    "trial": 2,
+    "check_id": "db_goal",
+    "grader": "state",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "A0006: booked for P003 instead of P004"
+   },
+   {
+    "scenario_id": "tool_timeout",
+    "split": "train",
+    "trial": 2,
+    "check_id": "db_goal",
+    "grader": "state",
+    "severity": "major",
+    "category": "prompt_fixable",
+    "evidence": "expected only A0005 to move; created=[], modified={}"
+   }
+  ]
+ },
+ "targets": [
+  "linked_child",
+  "tool_timeout"
+ ],
+ "candidates": [],
+ "schema_rejected": [
+  {
+   "candidate": null,
+   "reason": "reflector failed: QuotaExhausted: groq/openai/gpt-oss-120b: rate limit/quota reached (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m49sq7d7e7d9ff9h7crqkeh2` service"
+  }
+ ],
+ "budget_this_session": {
+  "elapsed_s": 1.7,
+  "by_role": {},
+  "total_calls": 0,
+  "total_tokens": 0
+ }
+}

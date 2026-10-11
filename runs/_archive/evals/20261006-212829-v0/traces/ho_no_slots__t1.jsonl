@@ -1,0 +1,15 @@
+{"seq": 0, "turn": 1, "type": "patient", "text": "I'd like a dermatology appointment on Tuesday or Thursday this week."}
+{"seq": 1, "turn": 1, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 2, "turn": 1, "type": "llm", "step": 0, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 907, "completion_tokens": 52, "n_tool_calls": 0}
+{"seq": 3, "turn": 1, "type": "agent", "text": "Sure! To help you find a dermatology appointment, could you please provide your full name and date of birth (YYYY-MM-DD)?", "canned": false}
+{"seq": 4, "turn": 1, "type": "state", "state": {"session_id": "ho_no_slots-1", "turn": 1, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 5, "turn": 2, "type": "patient", "text": "My full name is Meera Pillai and my date of birth is 1995-08-08."}
+{"seq": 6, "turn": 2, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 7, "turn": 2, "type": "llm", "step": 0, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 966, "completion_tokens": 47, "n_tool_calls": 1}
+{"seq": 8, "turn": 2, "type": "tool", "name": "verify_patient", "args": {"dob": "1995-08-08", "full_name": "Meera Pillai"}, "ok": true, "code": null, "data": {"verified": true, "name": "Meera Pillai"}}
+{"seq": 9, "turn": 2, "type": "llm", "step": 1, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1030, "completion_tokens": 107, "n_tool_calls": 1}
+{"seq": 10, "turn": 2, "type": "tool", "name": "search_slots", "args": {"date_from": "2026-10-13", "date_to": "2026-10-15", "specialty": "dermatology"}, "ok": true, "code": null, "data": {"slots": [], "more_available": false}}
+{"seq": 11, "turn": 2, "type": "llm", "step": 2, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1113, "completion_tokens": 124, "n_tool_calls": 0}
+{"seq": 12, "turn": 2, "type": "agent", "text": "I\u2019m sorry\u2014there are no free dermatology slots on Tuesday (13\u202fOct) or Thursday (15\u202fOct).  \nWould you like to see available dermatology appointments for the following week (20\u201324\u202fOct) or for another provider?", "canned": false}
+{"seq": 13, "turn": 2, "type": "state", "state": {"session_id": "ho_no_slots-1", "turn": 2, "verified_patient_id": "P006", "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 14, "turn": 3, "type": "patient", "text": "Yes, please show me the earliest available dermatology slot."}

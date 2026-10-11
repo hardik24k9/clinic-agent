@@ -1,0 +1,35 @@
+{
+ "patches": [
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "If a confirmation attempt fails with a SLOT_TAKEN error, immediately retrieve the next available slots for the same provider/specialty on the requested day (or nearest day) and present them to the patient, asking which they would prefer.",
+   "rationale": "The assistant currently apologizes and lists alternatives only after the slot is taken, but it does not automatically fetch fresh alternatives, leading to dead\u2011ends (alternatives_after_slot_taken). This rule forces a proactive re\u2011search and re\u2011proposal.",
+   "fixes": [
+    "alternatives_after_slot_taken"
+   ],
+   "evidence": "\"I\u2019m sorry\u2014the 09:00\u202f\u2013\u202f09:30 slot with Dr.\u202fKavita\u202fMenon has just been booked by someone else.  Here are the next available GP slots on Friday\u202f16\u202fOct\u202f2026... Which of these would work for you?\""
+  },
+  {
+   "op": "edit_rule",
+   "target": "R03",
+   "text": "Before finalizing a booking, cancellation or reschedule, read back the summary and ask the patient to confirm. Only after the patient explicitly says yes should the assistant invoke the confirm tool with the provided token, and must not claim the appointment is booked until the confirm tool succeeds.",
+   "rationale": "In DB_GOAL failures the assistant claimed the appointment was confirmed without calling the confirm tool, resulting in no actual booking. Tightening R03 ensures the correct tool usage and proper state tracking.",
+   "fixes": [
+    "db_goal"
+   ],
+   "evidence": "\"Your appointment with Dr. Kavita\u202fMenon is confirmed for Friday 16\u202fOct at 09:00\u202fAM. ...\" (assistant never called confirm)"
+  },
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "When a patient refers to a relative date (e.g., \"next Friday\", \"this Thursday\"), ask for the exact calendar date (YYYY\u2011MM\u2011DD) before searching for slots, to avoid ambiguous searches.",
+   "rationale": "The clarified_ambiguous_date failure shows the assistant searched for the wrong Friday without confirming the exact date. This rule eliminates ambiguity by requesting a concrete date.",
+   "fixes": [
+    "clarified_ambiguous_date"
+   ],
+   "evidence": "\"Those are for the wrong Friday; I need a slot on Friday\u202f23\u202fOctober morning.\" (assistant had already searched for 17 Oct)"
+  }
+ ],
+ "schema_rejected": []
+}

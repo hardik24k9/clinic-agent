@@ -1,0 +1,39 @@
+{"seq": 0, "turn": 1, "type": "patient", "text": "I need to move my skin doctor appointment to Thursday the 22nd."}
+{"seq": 1, "turn": 1, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 2, "turn": 1, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1502, "completion_tokens": 44, "n_tool_calls": 0}
+{"seq": 3, "turn": 1, "type": "agent", "text": "I'll help you reschedule your dermatology appointment. First, I need to verify your identity before proceeding with any changes.\n\nCould you please provide your full name and date of birth (in YYYY-MM-DD format)?", "canned": false}
+{"seq": 4, "turn": 1, "type": "state", "state": {"session_id": "tool_timeout-1", "turn": 1, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 5, "turn": 2, "type": "patient", "text": "Anita Rao, 03-02-1984."}
+{"seq": 6, "turn": 2, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 7, "turn": 2, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1572, "completion_tokens": 50, "n_tool_calls": 1}
+{"seq": 8, "turn": 2, "type": "tool", "name": "verify_patient", "args": {"full_name": "Anita Rao", "dob": "03-02-1984"}, "ok": false, "code": "INVALID_ARGUMENT", "data": null}
+{"seq": 9, "turn": 2, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1670, "completion_tokens": 19, "n_tool_calls": 0}
+{"seq": 10, "turn": 2, "type": "agent", "text": "I need your date of birth in YYYY-MM-DD format. Could you please provide it again?", "canned": false}
+{"seq": 11, "turn": 2, "type": "state", "state": {"session_id": "tool_timeout-1", "turn": 2, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 12, "turn": 3, "type": "patient", "text": "03021984."}
+{"seq": 13, "turn": 3, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 14, "turn": 3, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1708, "completion_tokens": 50, "n_tool_calls": 1}
+{"seq": 15, "turn": 3, "type": "tool", "name": "verify_patient", "args": {"full_name": "Anita Rao", "dob": "1984-02-03"}, "ok": false, "code": "VERIFICATION_FAILED", "data": null}
+{"seq": 16, "turn": 3, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1818, "completion_tokens": 39, "n_tool_calls": 0}
+{"seq": 17, "turn": 3, "type": "agent", "text": "I'm sorry, but the details you provided don't match our records. Could you please double-check your full name and date of birth? Please ensure the date is in YYYY-MM-DD format.", "canned": false}
+{"seq": 18, "turn": 3, "type": "state", "state": {"session_id": "tool_timeout-1", "turn": 3, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 1, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 19, "turn": 4, "type": "patient", "text": "Anita Rao, 03021984."}
+{"seq": 20, "turn": 4, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 21, "turn": 4, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1881, "completion_tokens": 50, "n_tool_calls": 1}
+{"seq": 22, "turn": 4, "type": "tool", "name": "verify_patient", "args": {"full_name": "Anita Rao", "dob": "1984-02-03"}, "ok": false, "code": "VERIFICATION_FAILED", "data": null}
+{"seq": 23, "turn": 4, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 1991, "completion_tokens": 68, "n_tool_calls": 0}
+{"seq": 24, "turn": 4, "type": "agent", "text": "I'm sorry, but I've reached the verification limit. The details you provided don't match our records. \n\nCould you please check if there might be a different spelling or format for your name or date of birth in our system? Alternatively, would you like to speak with clinic staff directly to verify your identity and reschedule your appointment?", "canned": false}
+{"seq": 25, "turn": 4, "type": "state", "state": {"session_id": "tool_timeout-1", "turn": 4, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 2, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 26, "turn": 5, "type": "patient", "text": "Thursday 22nd, any time is fine."}
+{"seq": 27, "turn": 5, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 28, "turn": 5, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2080, "completion_tokens": 68, "n_tool_calls": 0}
+{"seq": 29, "turn": 5, "type": "agent", "text": "I understand you'd like to reschedule your dermatology appointment to Thursday the 22nd. However, I still need to verify your identity before proceeding with any changes.\n\nSince we've reached the verification limit, would you like me to escalate this request to clinic staff who can help you verify your identity and reschedule your appointment?", "canned": false}
+{"seq": 30, "turn": 5, "type": "state", "state": {"session_id": "tool_timeout-1", "turn": 5, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 2, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 31, "turn": 6, "type": "patient", "text": "Yes, please."}
+{"seq": 32, "turn": 6, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 33, "turn": 6, "type": "llm", "step": 0, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2162, "completion_tokens": 67, "n_tool_calls": 1}
+{"seq": 34, "turn": 6, "type": "tool", "name": "escalate_to_human", "args": {"reason": "Patient needs to reschedule dermatology appointment but verification failed twice. Patient requested assistance with rescheduling to Thursday the 22nd.", "urgency": "routine"}, "ok": true, "code": null, "data": {"escalated": true, "ticket": "ESC-tool_timeout-1", "urgency": "routine", "first": true}}
+{"seq": 35, "turn": 6, "type": "llm", "step": 1, "model": "ollama/qwen3.5:4b", "prompt_tokens": 2298, "completion_tokens": 41, "n_tool_calls": 0}
+{"seq": 36, "turn": 6, "type": "agent", "text": "I've escalated your request to clinic staff. They will follow up with you to verify your identity and help reschedule your dermatology appointment to Thursday the 22nd. Please wait for their response.", "canned": false}
+{"seq": 37, "turn": 6, "type": "state", "state": {"session_id": "tool_timeout-1", "turn": 6, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 2, "locked": false, "escalated": true, "token_seq": 0}}
+{"seq": 38, "turn": 6, "type": "end", "reason": "escalated"}

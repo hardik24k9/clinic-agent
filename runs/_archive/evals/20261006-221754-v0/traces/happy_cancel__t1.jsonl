@@ -1,0 +1,29 @@
+{"seq": 0, "turn": 1, "type": "patient", "text": "I need to cancel my appointment on Wednesday."}
+{"seq": 1, "turn": 1, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 2, "turn": 1, "type": "llm", "step": 0, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 903, "completion_tokens": 74, "n_tool_calls": 0}
+{"seq": 3, "turn": 1, "type": "agent", "text": "Sure, I can help with that. Could you please provide your full name and date of birth (YYYY\u2011MM\u2011DD)?", "canned": false}
+{"seq": 4, "turn": 1, "type": "state", "state": {"session_id": "happy_cancel-1", "turn": 1, "verified_patient_id": null, "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 0}}
+{"seq": 5, "turn": 2, "type": "patient", "text": "Vikram Nair, 1979-11-20."}
+{"seq": 6, "turn": 2, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 7, "turn": 2, "type": "llm", "step": 0, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 953, "completion_tokens": 49, "n_tool_calls": 1}
+{"seq": 8, "turn": 2, "type": "tool", "name": "verify_patient", "args": {"dob": "1979-11-20", "full_name": "Vikram Nair"}, "ok": true, "code": null, "data": {"verified": true, "name": "Vikram Nair"}}
+{"seq": 9, "turn": 2, "type": "llm", "step": 1, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1020, "completion_tokens": 42, "n_tool_calls": 1}
+{"seq": 10, "turn": 2, "type": "tool", "name": "list_my_appointments", "args": {}, "ok": true, "code": null, "data": {"appointments": [{"appointment_id": "A0001", "patient": "Vikram Nair", "status": "booked", "slot_id": "PR1-20261014-1000", "when": "Wed 14 Oct 2026, 10:00 AM IST", "provider": "Dr. Kavita Menon", "specialty": "general_medicine"}]}}
+{"seq": 11, "turn": 2, "type": "llm", "step": 2, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1137, "completion_tokens": 57, "n_tool_calls": 1}
+{"seq": 12, "turn": 2, "type": "tool", "name": "propose_cancel", "args": {"appointment_id": "A0001"}, "ok": true, "code": null, "data": {"token": "CONF-B7B73B67", "summary": "Cancel Vikram Nair's appointment with Dr. Kavita Menon on Wed 14 Oct 2026, 10:00 AM IST"}}
+{"seq": 13, "turn": 2, "type": "llm", "step": 3, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1299, "completion_tokens": 92, "n_tool_calls": 0}
+{"seq": 14, "turn": 2, "type": "agent", "text": "**Proposed action:**  \nCancel Vikram Nair\u2019s appointment with Dr.\u202fKavita\u202fMenon on **Wed\u202f14\u202fOct\u202f2026,\u202f10:00\u202fAM IST**.  \n\nDo you want to proceed with this cancellation? (Please reply \u201cyes\u201d to confirm.)", "canned": false}
+{"seq": 15, "turn": 2, "type": "state", "state": {"session_id": "happy_cancel-1", "turn": 2, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": {"kind": "cancel", "token": "CONF-B7B73B67", "patient_id": "P002", "slot_id": null, "appointment_id": "A0001", "proposed_at_turn": 2, "summary": "Cancel Vikram Nair's appointment with Dr. Kavita Menon on Wed 14 Oct 2026, 10:00 AM IST"}, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 1}}
+{"seq": 16, "turn": 3, "type": "patient", "text": "yes"}
+{"seq": 17, "turn": 3, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 18, "turn": 3, "type": "llm", "step": 0, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1372, "completion_tokens": 50, "n_tool_calls": 1}
+{"seq": 19, "turn": 3, "type": "tool", "name": "confirm", "args": {"token": "CONF-B7B73B67"}, "ok": true, "code": null, "data": {"done": "cancel", "summary": "Cancel Vikram Nair's appointment with Dr. Kavita Menon on Wed 14 Oct 2026, 10:00 AM IST", "appointment_id": "A0001", "patient": "Vikram Nair", "status": "cancelled", "slot_id": "PR1-20261014-1000", "when": "Wed 14 Oct 2026, 10:00 AM IST", "provider": "Dr. Kavita Menon", "specialty": "general_medicine"}}
+{"seq": 20, "turn": 3, "type": "llm", "step": 1, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1471, "completion_tokens": 30, "n_tool_calls": 0}
+{"seq": 21, "turn": 3, "type": "agent", "text": "Your appointment has been cancelled.  \nIf you\u2019d like to book a new slot or need anything else, just let me know!", "canned": false}
+{"seq": 22, "turn": 3, "type": "state", "state": {"session_id": "happy_cancel-1", "turn": 3, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 1}}
+{"seq": 23, "turn": 4, "type": "patient", "text": "Thanks, that's all."}
+{"seq": 24, "turn": 4, "type": "guard", "flagged": false, "category": null, "source": "none", "degraded": false}
+{"seq": 25, "turn": 4, "type": "llm", "step": 0, "model": "groq/openai/gpt-oss-20b", "prompt_tokens": 1512, "completion_tokens": 29, "n_tool_calls": 0}
+{"seq": 26, "turn": 4, "type": "agent", "text": "You\u2019re welcome! Have a great day.", "canned": false}
+{"seq": 27, "turn": 4, "type": "state", "state": {"session_id": "happy_cancel-1", "turn": 4, "verified_patient_id": "P002", "acting_for": null, "offered_slots": [], "pending_action": null, "emergency": false, "failed_verifications": 0, "locked": false, "escalated": false, "token_seq": 1}}
+{"seq": 28, "turn": 4, "type": "end", "reason": "simulator_end"}

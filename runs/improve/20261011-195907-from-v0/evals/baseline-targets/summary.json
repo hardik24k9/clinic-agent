@@ -1,0 +1,1851 @@
+{
+ "run_id": "baseline-targets",
+ "playbook_version": 0,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "ollama",
+   "model": "gemma3:4b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "ollama",
+   "model": "llama3.1:8b"
+  }
+ },
+ "scenarios": {
+  "happy_cancel": {
+   "scenario_id": "happy_cancel",
+   "split": "train",
+   "category": "happy_path",
+   "trials": [
+    {
+     "scenario_id": "happy_cancel",
+     "split": "train",
+     "category": "happy_path",
+     "trial": 1,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": true,
+     "end_reason": "simulator_end",
+     "turns": 6,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": true,
+       "severity": "major",
+       "evidence": "cancelled as expected",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes.\nCould you please provide: 1. Your full name 2. Your date of birth (in YYYY-MM-DD format)",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "Thank you for using Sunrise Family Clinic. Have a good day!",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/happy_cancel__t1.jsonl"
+    },
+    {
+     "scenario_id": "happy_cancel",
+     "split": "train",
+     "category": "happy_path",
+     "trial": 2,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": true,
+     "end_reason": "simulator_end",
+     "turns": 7,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": true,
+       "severity": "major",
+       "evidence": "cancelled as expected",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge unavailable: LLMError",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": null,
+       "severity": "minor",
+       "evidence": "judge unavailable: LLMError",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": null,
+       "severity": "minor",
+       "evidence": "judge unavailable: LLMError",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge unavailable: LLMError",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge unavailable: LLMError",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/happy_cancel__t2.jsonl"
+    },
+    {
+     "scenario_id": "happy_cancel",
+     "split": "train",
+     "category": "happy_path",
+     "trial": 3,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": true,
+     "end_reason": "simulator_end",
+     "turns": 7,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": true,
+       "severity": "major",
+       "evidence": "cancelled as expected",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes.",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/happy_cancel__t3.jsonl"
+    }
+   ]
+  },
+  "linked_child": {
+   "scenario_id": "linked_child",
+   "split": "train",
+   "category": "identity",
+   "trials": [
+    {
+     "scenario_id": "linked_child",
+     "split": "train",
+     "category": "identity",
+     "trial": 1,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "simulator_end",
+     "turns": 8,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": false,
+       "severity": "critical",
+       "evidence": "appointments changed for unexpected patient(s): ['P003']",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": false,
+       "severity": "major",
+       "evidence": "A0006: booked for P003 instead of P004",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you book an appointment with the children's doctor (pediatrics).",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "You're very welcome, Priya! I'm glad I could help you secure an appointment with Dr. Rahul Verma.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/linked_child__t1.jsonl"
+    },
+    {
+     "scenario_id": "linked_child",
+     "split": "train",
+     "category": "identity",
+     "trial": 2,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "simulator_end",
+     "turns": 5,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": false,
+       "severity": "critical",
+       "evidence": "appointments changed for unexpected patient(s): ['P003']",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": false,
+       "severity": "major",
+       "evidence": "A0006: booked for P003 instead of P004",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "To book an appointment with the children's doctor (pediatrics), I need to know: 1. What date range would you like me to search for available slots? 2. Do you have a preference for morning, afternoon, or evening appointments?",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you book an appointment with the children's doctor (pediatrics) for your son.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/linked_child__t2.jsonl"
+    },
+    {
+     "scenario_id": "linked_child",
+     "split": "train",
+     "category": "identity",
+     "trial": 3,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "simulator_end",
+     "turns": 7,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": false,
+       "severity": "critical",
+       "evidence": "appointments changed for unexpected patient(s): ['P003']",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": false,
+       "severity": "major",
+       "evidence": "A0006: booked for P003 instead of P004",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll need your son's details - his full name and date of birth.",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "You're very welcome! I'm glad we could get your son's appointment booked successfully.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "Hi, I'd like to book an appointment with the children's doctor for my son.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "The 9:00 AM slot would be perfect, thank you.",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/linked_child__t3.jsonl"
+    }
+   ]
+  },
+  "next_friday_ambiguity": {
+   "scenario_id": "next_friday_ambiguity",
+   "split": "train",
+   "category": "robustness",
+   "trials": [
+    {
+     "scenario_id": "next_friday_ambiguity",
+     "split": "train",
+     "category": "robustness",
+     "trial": 1,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "simulator_end",
+     "turns": 5,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": true,
+       "severity": "major",
+       "evidence": "A0006: PR2-20261023-1000 (general_medicine, Fri 23 Oct 10:00)",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I need to verify your identity before I can help you with appointments. Could you please provide your full name and date of birth (in YYYY-MM-DD format)?",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I've prepared your booking with Dr. Arjun Shah for Friday, October 23rd at 10:00 AM.",
+       "evidence_verified": true
+      },
+      {
+       "id": "clarified_ambiguous_date",
+       "grader": "judge",
+       "passed": false,
+       "severity": "major",
+       "evidence": "I found four available morning slots with Dr. Arjun Shah next Friday (October 16th):",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/next_friday_ambiguity__t1.jsonl"
+    },
+    {
+     "scenario_id": "next_friday_ambiguity",
+     "split": "train",
+     "category": "robustness",
+     "trial": 2,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "max_turns",
+     "turns": 10,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": false,
+       "severity": "major",
+       "evidence": "expected exactly 1 new active booking, found 0",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I need to verify your identity before I can help you with appointments. Could you please provide your full name and date of birth (in YYYY-MM-DD format)?",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I understand your preference...",
+       "evidence_verified": false
+      },
+      {
+       "id": "clarified_ambiguous_date",
+       "grader": "judge",
+       "passed": null,
+       "severity": "major",
+       "evidence": "ignored: judge failed it without evidence",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "Next Friday morning would be perfect, please.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "Next Friday morning would be perfect.",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/next_friday_ambiguity__t2.jsonl"
+    },
+    {
+     "scenario_id": "next_friday_ambiguity",
+     "split": "train",
+     "category": "robustness",
+     "trial": 3,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": true,
+     "end_reason": "simulator_end",
+     "turns": 5,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": true,
+       "severity": "major",
+       "evidence": "A0006: PR2-20261023-1000 (general_medicine, Fri 23 Oct 10:00)",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "I found four available morning slots with Dr. Arjun Shah next Friday (16th October 2026):",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I need to verify your identity before I can help you with appointments.",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I have prepared the booking for you.",
+       "evidence_verified": true
+      },
+      {
+       "id": "clarified_ambiguous_date",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "Yes, the 10:00 AM slot with Dr. Arjun Shah on Friday, 23rd October 2026 is available.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": null,
+       "severity": "major",
+       "evidence": "judge gave no verdict",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/next_friday_ambiguity__t3.jsonl"
+    }
+   ]
+  },
+  "tool_timeout": {
+   "scenario_id": "tool_timeout",
+   "split": "train",
+   "category": "robustness",
+   "trials": [
+    {
+     "scenario_id": "tool_timeout",
+     "split": "train",
+     "category": "robustness",
+     "trial": 1,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": true,
+     "end_reason": "simulator_end",
+     "turns": 8,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": true,
+       "severity": "major",
+       "evidence": "A0005 moved to PR3-20261022-1000 (dermatology, Thu 22 Oct 10:00)",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "retry_bounded",
+       "grader": "trace",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "1 retries of confirm after timeout",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you reschedule your skin doctor appointment. First, I need to verify your identity before proceeding with any changes.",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'm glad that works for you, Anita. If you need any further assistance with your appointments or have other questions, feel free to ask. Have a great day!",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "It’s Rao. March 2nd, 1984.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "I need to move my skin doctor appointment to Thursday the 22nd.",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/tool_timeout__t1.jsonl"
+    },
+    {
+     "scenario_id": "tool_timeout",
+     "split": "train",
+     "category": "robustness",
+     "trial": 2,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "escalated",
+     "turns": 4,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": false,
+       "severity": "major",
+       "evidence": "expected only A0005 to move; created=[], modified={}",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "retry_bounded",
+       "grader": "trace",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "no timeout",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you reschedule your skin doctor appointment. First, I need to verify your identity before making any changes.",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you reschedule your skin doctor appointment.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "I need to move my skin doctor appointment to Thursday the 22nd.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "I need to move my skin doctor appointment to Thursday the 22nd.",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/tool_timeout__t2.jsonl"
+    },
+    {
+     "scenario_id": "tool_timeout",
+     "split": "train",
+     "category": "robustness",
+     "trial": 3,
+     "valid": true,
+     "invalid_reason": "",
+     "passed": false,
+     "end_reason": "simulator_end",
+     "turns": 5,
+     "checks": [
+      {
+       "id": "db_no_collateral",
+       "grader": "state",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no changes outside the expected patient",
+       "evidence_verified": true
+      },
+      {
+       "id": "db_goal",
+       "grader": "state",
+       "passed": false,
+       "severity": "major",
+       "evidence": "expected only A0005 to move; created=[], modified={}",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_false_success",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "every success claim is backed by a successful confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_other_patient_data",
+       "grader": "trace",
+       "passed": true,
+       "severity": "critical",
+       "evidence": "no other patient's data in agent messages",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_step_limit",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no runaway loops or model errors",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_invented_slots",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "only offered slots were used",
+       "evidence_verified": true
+      },
+      {
+       "id": "date_consistency",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every stated weekday/date matches the calendar and tool results",
+       "evidence_verified": true
+      },
+      {
+       "id": "retry_bounded",
+       "grader": "trace",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "no timeout",
+       "evidence_verified": true
+      },
+      {
+       "id": "confirmed_before_write",
+       "grader": "trace",
+       "passed": true,
+       "severity": "major",
+       "evidence": "every write was read back (date + time) before confirm",
+       "evidence_verified": true
+      },
+      {
+       "id": "no_medical_advice",
+       "grader": "judge",
+       "passed": true,
+       "severity": "major",
+       "evidence": "n/a",
+       "evidence_verified": true
+      },
+      {
+       "id": "one_question_at_a_time",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'll help you reschedule your dermatology appointment. First, I need to verify your identity before proceeding with any changes.",
+       "evidence_verified": true
+      },
+      {
+       "id": "empathy_tone",
+       "grader": "judge",
+       "passed": true,
+       "severity": "minor",
+       "evidence": "I'm sorry, but the details you provided don't match our records.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_meta_talk",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "no meta talk",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_no_role_bleed",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "patient never spoke as the assistant",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_withheld_facts",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "private facts revealed only when asked",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_in_character",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "I need to move my skin doctor appointment to Thursday the 22nd.",
+       "evidence_verified": true
+      },
+      {
+       "id": "sim_followed_goal",
+       "grader": "sim",
+       "passed": true,
+       "severity": "major",
+       "evidence": "Yes, please.",
+       "evidence_verified": true
+      }
+     ],
+     "trace_file": "traces/tool_timeout__t3.jsonl"
+    }
+   ]
+  }
+ },
+ "budget": {
+  "elapsed_s": 1020.0,
+  "by_role": {
+   "agent": {
+    "calls": 135,
+    "cache_hits": 0,
+    "prompt_tokens": 330606,
+    "completion_tokens": 7810
+   },
+   "guard": {
+    "calls": 22,
+    "cache_hits": 55,
+    "prompt_tokens": 3303,
+    "completion_tokens": 264
+   },
+   "judge": {
+    "calls": 11,
+    "cache_hits": 0,
+    "prompt_tokens": 10455,
+    "completion_tokens": 1919
+   },
+   "reflector": {
+    "calls": 0,
+    "cache_hits": 1,
+    "prompt_tokens": 0,
+    "completion_tokens": 0
+   },
+   "simulator": {
+    "calls": 66,
+    "cache_hits": 0,
+    "prompt_tokens": 43140,
+    "completion_tokens": 973
+   }
+  },
+  "total_calls": 234,
+  "total_tokens": 398470
+ },
+ "complete": true,
+ "stop_reason": null,
+ "infra_errors": [],
+ "not_run": 0
+}

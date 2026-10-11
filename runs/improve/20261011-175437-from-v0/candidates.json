@@ -1,0 +1,35 @@
+{
+ "patches": [
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "Upon selecting a date, search for available appointments with general medicine providers.",
+   "rationale": "To ensure that patients have access to general medicine providers on their preferred date.",
+   "fixes": [
+    "general-medicine-availability-check"
+   ],
+   "evidence": "Conversation excerpt: PATIENT: I need to cancel my appointment on Wednesday.\nASSISTANT: I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes."
+  },
+  {
+   "op": "edit_tool_description",
+   "target": "search_slots",
+   "text": "Search for available appointments with general medicine providers on the selected date.",
+   "rationale": "To make it clear what the tool does and to improve user experience.",
+   "fixes": [
+    "general-medicine-availability-check"
+   ],
+   "evidence": "Conversation excerpt: PATIENT: I\u2019m hoping for Thursday, October 15th if possible, any time works really well.\nASSISTANT: I found several available slots with Dr. Rahul Verma (Pediatrics) on Thursday, October 15th:"
+  },
+  {
+   "op": "add_example",
+   "target": null,
+   "text": "PATIENT: Hi, I'd like to book an appointment with a general medicine doctor.\nASSISTANT: I'll help you book an appointment with a general medicine doctor.\nPATIENT: When is the next available appointment?\nASSISTANT: I found several available slots with Dr. Smith (General Medicine) on Monday,\n- 9:00 AM IST\n- 9:30 AM IST\n- 10:00 AM IST\n- 10:30 AM IST\n- 11:00 AM IST\n- 11:30 AM IST\n- 12:00 PM IST\n- 12:30 PM IST\nPATIENT: The 10:30 AM slot would be fantastic, please.\nASSISTANT: I've prepared the booking for you.\n**Summary:** Book with Dr. Smith (General Medicine) on Monday at 10:30 AM IST.\nWould you like me to proceed with this booking?",
+   "rationale": "To illustrate the general behaviour for booking appointments with general medicine providers.",
+   "fixes": [
+    "general-medicine-availability-check"
+   ],
+   "evidence": "Conversation excerpt: PATIENT: I need to cancel my appointment on Wednesday.\nASSISTANT: I'll help you cancel your appointment. First, I need to verify your identity before proceeding with any changes."
+  }
+ ],
+ "schema_rejected": []
+}

@@ -1,0 +1,36 @@
+{
+ "patches": [
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "When mentioning a calendar date, always verify that the stated day of week matches the actual date (e.g., 2026-11-01 is a Tuesday). If the assistant is unsure, compute the correct day or ask the user to confirm, and never present mismatched day\u2011of\u2011week information.",
+   "rationale": "Prevents the assistant from giving inconsistent date\u2011day information, which caused the date_consistency failure where Wednesday, November 1st was incorrectly described as a Sunday, etc.",
+   "fixes": [
+    "date_consistency"
+   ],
+   "evidence": "Evidence: turn 5: says 'Wednesday, November 1st, 2026' but 2026-11-01 is a Sunday; turn 5: says 'Tuesday, October 31st, 2026' but 2026-10-31 is a Saturday; turn 5: says 'Thursday, November 2nd, 2026' but 2026-11-02 is a Monday"
+  },
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "When a patient requests a specific time window (e.g., \"afternoon\"), only propose slots that fall within that window. If no slots exist in the requested period, inform the user and ask for an alternative date or time range before proceeding to booking.",
+   "rationale": "Ensures the assistant respects the patient's time\u2011of\u2011day preference, fixing the db_goal failure where an afternoon request was satisfied with a 9:00\u202fAM morning slot.",
+   "fixes": [
+    "db_goal"
+   ],
+   "evidence": "Evidence: Patient asked for a Wednesday afternoon slot, but the assistant booked a 9:00\u202fAM morning slot (PR1-20261014-0900) and confirmed it."
+  },
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "When booking for a dependent, the assistant must first invoke the act_for_dependent tool with the dependent's full name and DOB, and then use that context for all subsequent appointment actions. Under no circumstance should an appointment be created for the primary patient when the request pertains to a dependent.",
+   "rationale": "Guarantees that dependent appointments are recorded under the correct patient record and prevents collateral changes to unrelated patients, addressing both the db_goal and db_no_collateral failures where a child's appointment was logged under the parent\u2019s record.",
+   "fixes": [
+    "db_goal",
+    "db_no_collateral"
+   ],
+   "evidence": "Evidence: In the pediatric booking flow, the assistant booked the appointment for the primary patient (Priya Sharma) instead of the dependent (Aarav Sharma), leading to unexpected patient A0006 being associated with the wrong record."
+  }
+ ],
+ "schema_rejected": []
+}

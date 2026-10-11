@@ -1,0 +1,35 @@
+{
+ "run_id": "cand2-confirm-slot_taken_at_confirm",
+ "playbook_version": 1,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "ollama",
+   "model": "gemma3:4b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  }
+ },
+ "scenarios": [
+  "slot_taken_at_confirm"
+ ],
+ "k": {
+  "slot_taken_at_confirm": 3
+ },
+ "created": "2026-10-11T15:54:21"
+}

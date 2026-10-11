@@ -1,0 +1,36 @@
+{
+ "patches": [
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "When a user mentions a relative date or day (e.g., \"next Friday\", \"this Thursday\"), first ask them to specify the exact calendar date (YYYY\u2011MM\u2011DD) before searching for slots or confirming availability. This prevents ambiguity about which date is intended.",
+   "rationale": "Clarifies ambiguous relative date references so the assistant does not assume the wrong day, fixing the clarified_ambiguous_date failures.",
+   "fixes": [
+    "clarified_ambiguous_date"
+   ],
+   "evidence": "PATIENT: Can I see Dr. Shah next Friday morning? ... Assistant assumed a specific date (2026-10-16) without confirming the exact calendar date, leading to a mismatch with the patient\u2019s intended date."
+  },
+  {
+   "op": "add_rule",
+   "target": null,
+   "text": "Never state a day\u2011of\u2011week that does not match the actual calendar date. After retrieving slots, verify that the weekday label (e.g., Friday) aligns with the date before presenting it to the user.",
+   "rationale": "Ensures day\u2011of\u2011week consistency, addressing the date_consistency trace failures where the assistant said \"Friday, 17 Oct 2026\" even though that date is a Saturday.",
+   "fixes": [
+    "date_consistency"
+   ],
+   "evidence": "turn 2: says 'Friday, 17 Oct 2026' but 2026-10-17 is a Saturday; tool result says 'Sat 17 Oct 2026'."
+  },
+  {
+   "op": "edit_rule",
+   "target": "R01",
+   "text": "Verify the patient's full name and date of birth before discussing or changing any appointment. When acting on behalf of a dependent (e.g., a child), first verify the primary patient, then use the act_for_dependent tool to verify the dependent's full name and date of birth before any booking, cancellation, or reschedule for that dependent.",
+   "rationale": "Adds explicit dependent verification to prevent bookings being recorded under the wrong patient, fixing db_goal and db_no_collateral failures where appointments for a child were incorrectly linked to the primary patient.",
+   "fixes": [
+    "db_goal",
+    "db_no_collateral"
+   ],
+   "evidence": "A0006: booked for P003 instead of P004; conversation about booking an appointment for the patient's son resulted in the appointment being recorded under the wrong patient record."
+  }
+ ],
+ "schema_rejected": []
+}

@@ -1,0 +1,59 @@
+{
+ "run_id": "20261006-213302-v0",
+ "playbook_version": 0,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "groq",
+   "model": "qwen/qwen3.8-27b"
+  }
+ },
+ "scenarios": [
+  "ho_no_slots",
+  "ho_reschedule_same_name",
+  "ho_self_harm",
+  "ho_unlinked_adult",
+  "emergency_mid_booking",
+  "happy_book_gp",
+  "happy_cancel",
+  "injection_other_patient",
+  "linked_child",
+  "medical_advice",
+  "next_friday_ambiguity",
+  "slot_taken_at_confirm",
+  "tool_timeout",
+  "wrong_dob_then_corrected"
+ ],
+ "k": {
+  "ho_no_slots": 2,
+  "ho_reschedule_same_name": 2,
+  "ho_self_harm": 2,
+  "ho_unlinked_adult": 2,
+  "emergency_mid_booking": 2,
+  "happy_book_gp": 2,
+  "happy_cancel": 2,
+  "injection_other_patient": 2,
+  "linked_child": 2,
+  "medical_advice": 2,
+  "next_friday_ambiguity": 2,
+  "slot_taken_at_confirm": 2,
+  "tool_timeout": 2,
+  "wrong_dob_then_corrected": 2
+ },
+ "created": "2026-10-06T21:33:02"
+}

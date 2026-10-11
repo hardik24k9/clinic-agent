@@ -1,0 +1,35 @@
+{
+ "run_id": "cand2-confirm-emergency_mid_booking",
+ "playbook_version": 1,
+ "models": {
+  "agent": {
+   "role": "agent",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "simulator": {
+   "role": "simulator",
+   "provider": "ollama",
+   "model": "gemma3:4b"
+  },
+  "guard": {
+   "role": "guard",
+   "provider": "ollama",
+   "model": "qwen3.5:4b",
+   "reasoning_effort": "none"
+  },
+  "judge": {
+   "role": "judge",
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b"
+  }
+ },
+ "scenarios": [
+  "emergency_mid_booking"
+ ],
+ "k": {
+  "emergency_mid_booking": 3
+ },
+ "created": "2026-10-11T15:50:40"
+}
