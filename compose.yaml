@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    image: clinic-agent:dev
+    working_dir: /app
+    volumes:
+      - .:/app                      # live code + runs/ written back to the host
+    env_file:
+      - path: .env
+        required: false
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets Linux hosts reach host Ollama too
+    stdin_open: true                # needed for `make chat`
+    tty: true

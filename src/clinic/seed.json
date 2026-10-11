@@ -1,0 +1,37 @@
+{
+  "clinic": {"name": "Sunrise Family Clinic", "timezone": "IST"},
+  "slot_minutes": 30,
+  "horizon_days": 14,
+  "providers": [
+    {"id": "PR1", "name": "Dr. Kavita Menon", "specialty": "general_medicine",
+     "weekdays": [0, 1, 2, 3, 4], "hours": [["09:00", "12:00"], ["14:00", "17:00"]]},
+    {"id": "PR2", "name": "Dr. Arjun Shah", "specialty": "general_medicine",
+     "weekdays": [0, 2, 4, 5], "hours": [["10:00", "13:00"]]},
+    {"id": "PR3", "name": "Dr. Neha Iyer", "specialty": "dermatology",
+     "weekdays": [1, 3, 4], "hours": [["09:00", "12:00"], ["15:00", "17:00"]]},
+    {"id": "PR4", "name": "Dr. Rahul Verma", "specialty": "pediatrics",
+     "weekdays": [0, 1, 2, 3, 4], "hours": [["09:00", "13:00"]]}
+  ],
+  "full_days": [
+    {"provider_id": "PR3", "date": "2026-10-13"},
+    {"provider_id": "PR3", "date": "2026-10-15"},
+    {"provider_id": "PR4", "date": "2026-10-14"}
+  ],
+  "patients": [
+    {"id": "P001", "full_name": "Anita Rao",     "dob": "1984-03-02", "phone": "+91-90000-00001"},
+    {"id": "P002", "full_name": "Vikram Nair",   "dob": "1979-11-20", "phone": "+91-90000-00002"},
+    {"id": "P003", "full_name": "Priya Sharma",  "dob": "1990-06-15", "phone": "+91-90000-00003"},
+    {"id": "P004", "full_name": "Aarav Sharma",  "dob": "2016-04-09", "phone": "+91-90000-00003", "guardian_id": "P003"},
+    {"id": "P005", "full_name": "Rohan Das",     "dob": "1965-01-30", "phone": "+91-90000-00005"},
+    {"id": "P006", "full_name": "Meera Pillai",  "dob": "1995-08-08", "phone": "+91-90000-00006"},
+    {"id": "P007", "full_name": "Sanjay Gupta",  "dob": "1988-12-01", "phone": "+91-90000-00007"},
+    {"id": "P008", "full_name": "Rohan Das",     "dob": "2001-07-14", "phone": "+91-90000-00008"}
+  ],
+  "appointments": [
+    {"id": "A0001", "patient_id": "P002", "slot_id": "PR1-20261014-1000", "status": "booked"},
+    {"id": "A0002", "patient_id": "P004", "slot_id": "PR4-20261013-0930", "status": "booked"},
+    {"id": "A0003", "patient_id": "P005", "slot_id": "PR3-20261016-0900", "status": "booked"},
+    {"id": "A0004", "patient_id": "P006", "slot_id": "PR1-20261016-1100", "status": "cancelled"},
+    {"id": "A0005", "patient_id": "P001", "slot_id": "PR3-20261020-1000", "status": "booked"}
+  ]
+}

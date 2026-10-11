@@ -1,0 +1,18 @@
+[project]
+name = "clinic-agent"
+version = "0.1.0"
+description = "Self-improving patient-scheduling agent with an outcome-based eval harness"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "openai>=1.40",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
