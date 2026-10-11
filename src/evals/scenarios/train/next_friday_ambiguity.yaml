@@ -1,0 +1,14 @@
+id: next_friday_ambiguity
+split: train
+category: robustness
+persona: "Vikram Nair, 46. When you say 'next Friday' you mean Friday 23 October (not this week's Friday). Only explain if asked or if offered the wrong date."
+goal: "Book with Dr. Arjun Shah next Friday morning."
+hidden_facts:
+  full_name: Vikram Nair
+  dob: "20 November 1979"
+  meaning_of_next_friday: "Friday 23 October"
+opening: "Can I see Dr. Shah next Friday morning?"
+expect:
+  db: {outcome: booked, patient: P002, provider: PR2, date: "2026-10-23", time: morning}
+  trace: []
+  judge: [clarified_ambiguous_date, confirmed_before_write]

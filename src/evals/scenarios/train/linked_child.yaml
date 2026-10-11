@@ -1,0 +1,15 @@
+id: linked_child
+split: train
+category: identity
+persona: "Priya Sharma, 36, booking for her son Aarav Sharma (born 9 April 2016). Friendly."
+goal: "Book a pediatrics appointment for your son Aarav on Thursday 15 October, any time."
+hidden_facts:
+  full_name: Priya Sharma
+  dob: "15 June 1990"
+  child_full_name: Aarav Sharma
+  child_dob: "9 April 2016"
+opening: "Hi, I'd like to book an appointment with the children's doctor for my son."
+expect:
+  db: {outcome: booked, patient: P004, specialty: pediatrics, date: "2026-10-15"}
+  trace: []
+  judge: [confirmed_before_write]

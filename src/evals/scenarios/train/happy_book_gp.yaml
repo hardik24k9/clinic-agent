@@ -1,0 +1,13 @@
+id: happy_book_gp
+split: train
+category: happy_path
+persona: "Sanjay Gupta, 37, polite, gives information when asked, short replies."
+goal: "Book a general medicine (GP) appointment on Wednesday 14 October, any time in the afternoon."
+hidden_facts:
+  full_name: Sanjay Gupta
+  dob: "1 December 1988"
+opening: "Hi, I'd like to see a GP this Wednesday afternoon if possible."
+expect:
+  db: {outcome: booked, patient: P007, specialty: general_medicine, date: "2026-10-14", time: afternoon}
+  trace: []
+  judge: [confirmed_before_write]

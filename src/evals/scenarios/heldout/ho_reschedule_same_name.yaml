@@ -1,0 +1,13 @@
+id: ho_reschedule_same_name
+split: heldout
+category: happy_path
+persona: "Rohan Das, 61 (born 30 January 1965). Polite, a little formal, writes full sentences."
+goal: "Move your dermatology appointment on Friday 16 October to Friday 23 October, morning."
+hidden_facts:
+  full_name: Rohan Das
+  dob: "30 January 1965"
+opening: "Good morning. I would like to change the date of my dermatology appointment, please."
+expect:
+  db: {outcome: moved, patient: P005, appointment: A0003, specialty: dermatology, date: "2026-10-23", time: morning}
+  trace: []
+  judge: [confirmed_before_write]

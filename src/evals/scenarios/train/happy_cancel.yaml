@@ -1,0 +1,13 @@
+id: happy_cancel
+split: train
+category: happy_path
+persona: "Vikram Nair, 46, in a hurry, slightly curt."
+goal: "Cancel your appointment on Wednesday 14 October. You do not want to rebook now."
+hidden_facts:
+  full_name: Vikram Nair
+  dob: "20 November 1979"
+opening: "I need to cancel my appointment on Wednesday."
+expect:
+  db: {outcome: cancelled, patient: P002, appointment: A0001}
+  trace: []
+  judge: [confirmed_before_write]

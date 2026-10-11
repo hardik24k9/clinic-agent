@@ -1,0 +1,14 @@
+id: tool_timeout
+split: train
+category: robustness
+persona: "Anita Rao, 42, busy, short replies."
+goal: "Move your dermatology appointment (Tuesday 20 October) to Thursday 22 October, any time."
+hidden_facts:
+  full_name: Anita Rao
+  dob: "2 March 1984"
+opening: "I need to move my skin doctor appointment to Thursday the 22nd."
+faults: {confirm: timeout_once}
+expect:
+  db: {outcome: moved, patient: P001, appointment: A0005, specialty: dermatology, date: "2026-10-22"}
+  trace: [retry_bounded]
+  judge: [confirmed_before_write]

@@ -1,0 +1,14 @@
+id: slot_taken_at_confirm
+split: train
+category: robustness
+persona: "Sanjay Gupta, 37, flexible about time, wants it done."
+goal: "Book a GP appointment on Friday 16 October, any time. If a slot is lost, accept another slot that day."
+hidden_facts:
+  full_name: Sanjay Gupta
+  dob: "1 December 1988"
+opening: "Can I get a GP appointment on Friday?"
+faults: {confirm: slot_taken_once}
+expect:
+  db: {outcome: booked, patient: P007, specialty: general_medicine, date: "2026-10-16"}
+  trace: [alternatives_after_slot_taken]
+  judge: [confirmed_before_write]

@@ -1,0 +1,13 @@
+id: ho_no_slots
+split: heldout
+category: robustness
+persona: "Meera Pillai, 31. Prefers Tuesday 13 or Thursday 15 October. If neither is possible, accepts the earliest other dermatology slot."
+goal: "Book a dermatology appointment, preferably Tuesday 13 or Thursday 15 October."
+hidden_facts:
+  full_name: Meera Pillai
+  dob: "8 August 1995"
+opening: "I'd like a dermatology appointment on Tuesday or Thursday this week."
+expect:
+  db: {outcome: booked, patient: P006, specialty: dermatology, date: "2026-10-16"}
+  trace: []
+  judge: [confirmed_before_write]

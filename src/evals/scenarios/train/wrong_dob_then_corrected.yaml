@@ -1,0 +1,16 @@
+id: wrong_dob_then_corrected
+split: train
+category: identity
+persona: "Priya Sharma, 36, types quickly and makes a typo in her date of birth the first time."
+goal: "Book a GP appointment on Friday 16 October in the morning for yourself."
+hidden_facts:
+  full_name: Priya Sharma
+  dob: "15 June 1990"
+opening: "Hi, I need a GP slot this Friday morning please."
+script:
+  2: "Priya Sharma, 16/05/1990"
+  3: "Sorry, typo! It's 15 June 1990."
+expect:
+  db: {outcome: booked, patient: P003, specialty: general_medicine, date: "2026-10-16", time: morning}
+  trace: []
+  judge: [confirmed_before_write]
